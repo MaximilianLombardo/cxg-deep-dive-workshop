@@ -1,0 +1,44 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+
+format: jb-book
+root: intro
+parts:
+- caption: "Preface"
+  chapters:
+  - file: preface/about
+  - file: preface/whomadethis
+  - file: preface/imageanalysis
+  - file: preface/feedback
+  
+  
+- caption: "Onboarding to napari"
+  chapters:
+  - file: onboard/whatisnapari
+  - file: onboard/gettingstarted
+  - file: onboard/gettingstarted-2
+  - file: onboard/gettingstarted2-5-napari-plugin-installation-workflow.md
+  - file: onboard/gettingstarted-3
+
+- caption: "Segmentation Workflows"
+  chapters:
+  - file: workflow/cellpose
+    sections:
+      - file: workflow/cellpose-parameters
+      - file: workflow/cellpose-FIJI
+  - file: workflow/partseg
+    sections:
+      - file: workflow/partseg-nuclei
+      - file: workflow/partseg-foci
+      - file: workflow/partseg-quantification
+  - file: workflow/allencell
+    sections:
+      - file: workflow/allencell-protocol
+      - file: workflow/allencell-parameters
+      
+- caption: "Closing"
+  chapters:
+  - file: closing
+
+
