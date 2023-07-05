@@ -668,8 +668,13 @@ title="Print to PDF"
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#overview">
-   Overview
+  <a class="reference internal nav-link" href="#pre-requisites-and-introductory-materials">
+   Pre-requisites and Introductory Materials
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#course-overview">
+   Course Overview
   </a>
  </li>
 </ul>
@@ -683,8 +688,23 @@ title="Print to PDF"
               
   <section class="tex2jax_ignore mathjax_ignore" id="cellxgene-suite-deep-dive">
 <h1>CELLxGENE Suite Deep Dive<a class="headerlink" href="#cellxgene-suite-deep-dive" title="Permalink to this headline">#</a></h1>
-<p><strong>By <a class="reference external" href="https://cellxgene.cziscience.com/">the CELLxGENE Team</a> 🔬</strong></p>
-<p>Welcome to the CELLxGENE Deep Dive Course! This course will take 3 - 4 hours to complete and will demonstrate how to use the entirety of the CELLxGENE suite to aid in your research and single cell analysis journey. You can expect to learn about the following tools from the CELLxGENE suite:</p>
+<p><strong>By the <a class="reference external" href="https://cellxgene.cziscience.com/">CELLxGENE Team</a> 🔬</strong></p>
+<p>Welcome to the CELLxGENE Deep Dive Course! The <a class="reference external" href="https://cellxgene.cziscience.com/">CELLxGENE team</a> at the <a class="reference external" href="https://chanzuckerberg.com/science/">Chanzuckerberg Initiative (CZI)</a> builds and maintains open source tools that help scientists at all levels of familiarity with single cell analysis Find, Explore, Download, and Analyze single cell data. The material in this course is relevant for scientists from all biological disciplines that currently utilize or wish to utilize single cell transcriptomic data in their research. Much of what is covered in this course also applies to single cell non-transcriptomic data (i.e. spatial, epigenetic, etc….) This course will take 3 - 4 hours to complete and will demonstrate how to use the entirety of the CELLxGENE suite to aid in your research and single cell analysis journey.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you encounter any issues, contact us at <span class="xref myst">cellxgene&#64;chanzuckerberg.com</span> or file an issue on <a class="reference external" href="https://github.com/chanzuckerberg/cellxgene/issues">the CELLxGENE annotate github</a>.</p>
+</div>
+<section id="pre-requisites-and-introductory-materials">
+<h2>Pre-requisites and Introductory Materials<a class="headerlink" href="#pre-requisites-and-introductory-materials" title="Permalink to this headline">#</a></h2>
+<p>To follow this course, one should have a basic understanding of what single cell data is. Although many of our tools do not require previous exposure to single cell data to get started, it is often helpful to have a basic understanding of single cell data generation and analysis to be able to perform more advanced data queries or derive more nuanced interpretations of outputs from visual tools. If you don’t have any previous exposure to single cell, then we suggest the following introductory resources:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.singlecellcourse.org/introduction-to-single-cell-rna-seq.html">The Single Cell Course by the Cellular Genetics Informatics team at the Sanger Institute</a></p></li>
+<li><p><a class="reference external" href="https://hbctraining.github.io/scRNA-seq_online/lessons/01_intro_to_scRNA-seq.html">Introduction to Single-Cell RNA-seq</a></p></li>
+</ul>
+</section>
+<section id="course-overview">
+<h2>Course Overview<a class="headerlink" href="#course-overview" title="Permalink to this headline">#</a></h2>
+<p>Broadly speaking the core of the CELLxGENE platform is a standardized data corpus which is composed of author submitted, publicly available datasets. The CELLxGENE team has built tools to allow users to find and download data form the corpus (Data Portal and Cell Census API) or to visualize corpus data in a hosted or local environment (Gene Expression, Hosted Explorer, Annotate). Here is a list of the tools just mentioned and a little bit more information about their intended use cases:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://cellxgene.cziscience.com/collections">Data Portal</a> and <a class="reference external" href="https://github.com/chanzuckerberg/single-cell-curation/blob/main/schema/3.0.0/schema.md">Schema</a></p>
 <ul>
@@ -698,17 +718,15 @@ title="Print to PDF"
 </li>
 <li><p><a class="reference external" href="https://cellxgene.cziscience.com/e/53d208b0-2cfd-4366-9866-c3c6114081bc.cxg/">Explorer</a> and <a class="reference external" href="https://github.com/chanzuckerberg/cellxgene">Annotate</a></p>
 <ul>
-<li><p>Participants will learn about the CELLxGENE data explorer. We will cover the hosted version, which allows the visualization and dataset filtering based on gene expression and other relevant metadata in individual datasets. We will also cover the local version of the CELLxGENE Explorer application, where users can create custom annotations on a dataset or use models trained on the CELLxGENE corpus to automatically annotate their datasets (prototype).</p></li>
+<li><p>Visualize and filter cells based on gene expression and other relevant metadata (i.e. donor, tissue of origin, disease annotation, etc. …) in individual datasets. In the CELLxGENE Annotate (the local version of the Explorer Application) , users can create custom annotations on a dataset or use models trained on the CELLxGENE corpus to automatically annotate their datasets (prototype).</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://chanzuckerberg.github.io/cellxgene-census/">Cell Census API</a></p>
+<ul>
+<li><p>An overview of CELLxGENE Cell Census and API. Participants will learn about the CELLxGENE data corpus and schema. We will then build upon this background to talk about the CZI Cell Census and accompanying API for programmatic access to the CELLxGENE data corpus.</p></li>
 </ul>
 </li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If you encounter any issues, contact us at <span class="xref myst">cellxgene&#64;chanzuckerberg.com</span> or file an issue on <a class="reference external" href="https://github.com/chanzuckerberg/cellxgene/issues">the CELLxGENE annotate github</a>.</p>
-</div>
-<section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h2>
-<p>This course is split into 3 sections consisting of both video and text. In the <strong><span class="xref myst">preface</span></strong>, you’ll learn about how this course came to be and find a list of resources for foundational image analysis concepts that will help you get the most out of these materials. In the <strong><span class="xref myst">onboarding section</span></strong>, you’ll learn more about what napari is, and be guided through installing napari and plugins on your computer. Finally in the <strong><a class="reference internal" href="workflow/landing.html"><span class="doc std std-doc">workflows section</span></a></strong>, you’ll dig into three cell segmentation case studies (nuclei, foci in nuclei, and filaments) that illustrate how to perform a cell segmentation workflow from start to finish within napari, using sample data (or your own), and various napari plugins.</p>
 <br>
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
 <div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
@@ -806,8 +824,13 @@ title="Print to PDF"
 <nav id="bd-toc-nav" class="page-toc">
     <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#overview">
-   Overview
+  <a class="reference internal nav-link" href="#pre-requisites-and-introductory-materials">
+   Pre-requisites and Introductory Materials
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#course-overview">
+   Course Overview
   </a>
  </li>
 </ul>
