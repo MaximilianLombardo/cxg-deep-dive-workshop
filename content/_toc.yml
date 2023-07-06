@@ -9,17 +9,17 @@ parts:
   chapters:
   - file: preface/about
   - file: preface/whomadethis
-  - file: preface/imageanalysis
+  - file: preface/singlecellanalysis
   - file: preface/feedback
   
   
-- caption: "Onboarding to napari"
+- caption: "Data Portal"
   chapters:
-  - file: onboard/whatisnapari
-  - file: onboard/gettingstarted
-  - file: onboard/gettingstarted-2
-  - file: onboard/gettingstarted2-5-napari-plugin-installation-workflow.md
-  - file: onboard/gettingstarted-3
+  - file: dataportal/whatisdataportal
+  - file: dataportal/gettingstarted
+  - file: dataportal/gettingstarted-2
+  - file: dataportal/gettingstarted2-5-napari-plugin-installation-workflow.md
+  - file: dataportal/gettingstarted-3
 
 - caption: "Segmentation Workflows"
   chapters:

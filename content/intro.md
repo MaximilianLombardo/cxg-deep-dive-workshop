@@ -20,7 +20,7 @@ To follow this course, one should have a basic understanding of what single cell
 
 ## Course Overview
 
-Broadly speaking the core of the CELLxGENE platform is a standardized data corpus which is composed of author submitted, publicly available datasets. The CELLxGENE team has built tools to allow users to find and download data form the corpus (Data Portal and Cell Census API) or to visualize corpus data in a hosted or local environment (Gene Expression, Hosted Explorer, Annotate). Here is a list of the tools just mentioned and a little bit more information about their intended use cases:
+Broadly speaking the core of the CELLxGENE platform is a standardized data corpus which is composed of author submitted, publicly available datasets. The CELLxGENE team has built tools to allow users to find and download data form the corpus (Data Portal and Cell Census API) or to visualize corpus data in a hosted or local environment (Gene Expression, Hosted Explorer, Annotate). These tools are organized into CZ CELLxGENE Discover (which is comprised of the data portal, API, and hosted visualization tools) and CZ CELLxGENE Annotate (comprised of the desktop explorer). All of these tools are covered by different modules within this course. Here is a list of the tools just mentioned and the intended use cases for each tool that you will learn about in this course:
 
 - [Data Portal](https://cellxgene.cziscience.com/collections) and [Schema](https://github.com/chanzuckerberg/single-cell-curation/blob/main/schema/3.0.0/schema.md)
     - An overview of how to use the portal discover datasets + the schema that defines the metadata that can be found in the corpus.
@@ -35,22 +35,16 @@ Broadly speaking the core of the CELLxGENE platform is a standardized data corpu
  
  ::::{grid} 2
 :::{grid-item-card}  **Notable lessons**
-- [All about virtual environments, Python and napari](https://chanzuckerberg.github.io/napari-segmentation-workshop/onboard/whatisnapari.html) 🐍
+- [CELLxGENE data portal](www.google.com) TODO make real link 🐍
   
-- [Installing the latest version of napari with minimal coding](https://chanzuckerberg.github.io/napari-segmentation-workshop/onboard/gettingstarted.html#video-walkthrough) 💽  
+- [Gene Expression](www.google.com)  TODO make real link 💽  
 
-- [Nuclei segmentation with *Cellpose*](workflow/cellpose.md) ⚙️
+- [Explorer](www.google.com) TODO make real link ⚙️
 
-- [Foci segmentation with *PartSeg*](workflow/partseg.md) ⚙️
+- [Cell Census API](www.google.com) TODO make real link ⚙️
   
-- [Filament segmentation with *Allen Cell Segmenter*](workflow/allencell.md) ⚙️
 :::
-:::{grid-item-card}  **Supporting links**
-- [Napari.org](https://napari.org) community and developer site
+:::{grid-item-card}  **Quick Links**
+- [CZ CELLxGENE](https://cellxgene.cziscience.com/): discover the CELLxGENE suite
 
-- The [napari hub](https://napari-hub.org) for the latest plugins
-
-- Official Bravo Cohort plugin collection page   
-
-- Image.sc forum sticky thread on the napari segmentation course  
 ::::
