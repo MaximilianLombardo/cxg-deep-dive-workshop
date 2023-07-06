@@ -2,17 +2,16 @@ CELLxGENE Discover Data Portal
 =======================
 ## Learning Objectives
 
-This is a brief introduction to the CELLxGENE Discover Data Portal and corpus. In this lesson, you'll learn about the [CELLxGENE Data Portal](https://cellxgene.cziscience.com/collections), the schema that every dataset in the portal adheres to, and how to submit your datasets to the CELLxGENE team 
+This is a brief introduction to the CELLxGENE Discover Data Portal and corpus. In this lesson, you'll learn about the [CELLxGENE Data Portal](https://cellxgene.cziscience.com/collections), the [schema](https://github.com/chanzuckerberg/single-cell-curation/blob/main/schema/3.0.0/schema.md) that every dataset in the portal adheres to, and how to submit your datasets to the CELLxGENE team.
 
 1.  [Data portal Overview](#data-portal-overview)
-2.  [The power of Python](#the-power-of-python)
-3.  [Interoperability of napari](#interoperability-of-napari)
-4.  [Supporting materials](#supporting-materials)
+2.  [Corpus Schema](#corpus-schema)
+3.  [Dataset submission](#dataset-submission)
 
 - **Time to learn**: 20 minutes
 
 :::{note}
-Please check [napari documentation](https://napari.org/tutorials/start_index.html) for more information, especially related to napari usage with programming. There are many aspects of napari's capabilities that are not currently accessible without programming. Although parts of napari are still undergoing development and some kinks are still being ironed out, napari is a powerful tool for image analysis, especially for complex, large, or multi-dimensional datasets.
+Please check [documentation](https://cellxgene.cziscience.com/docs/01__CellxGene) for more information.
 :::
 
 ![Picture of art installation of networked cables](images/napari-viewer.gif)
@@ -33,7 +32,7 @@ Napari aims to minimize (and eventually eliminate) the amount of coding knowledg
 Although the [napari bundled app](https://napari.org/stable/tutorials/fundamentals/installation.html#install-as-a-bundled-app) already exists, it is still in development and not entirely stable. We recommend [installing napari as a Python package](https://napari.org/stable/tutorials/fundamentals/installation.html#prerequisites-for-installing-napari-as-a-python-package) if you intend to perform cell segmentation. This note will be updated as napari evolves.
 :::
 
-## The power of Python
+## Corpus Schema
 
 Large datasets produced by modern imaging technologies (such as time lapse imaging, confocal microscopy, super-resolution microscopy, or light sheet microscopy) can be challenging for legacy tech to handle and analyze. Sophisticated methods are needed for analysing this data and often these methods utilize programming languages such as Python. Python is an open-source language with many capabilities for image analysis provided by its numerous open-source packages (also called libraries). However, without coding experience, researchers have limited options for utilizing the image processing power of Python. Graphical user interfaces (GUIs), like napari's, are a way to utilize Python-based analysis methods without writing any code.
 
@@ -43,7 +42,7 @@ Napari’s utility is certainly not limited to handling large datasets. Since na
 
 Napari is built on the Python coding language, intending to bridge the gap between the inherently visual nature of image analysis and the computational power available through Python and its packages. This includes, for example, being able to leverage the speed of GPU-based computing and machine learning for large and complex processes, such as content-aware denoising, handling light-sheet microscope data, or even challenging segmentation cases! 
 
-## Interoperability of napari
+## Dataset Submission
 
 Since napari is in the alpha stage of development, there are some functions that are not yet stable or available in the GUI. napari can be used in conjuction with other analysis platforms via these plugins for no-code workflows. For example, napari is interoperable with [FIJI](https://imagej.net/software/fiji/) through plugins for using napari with FIJI. Search for FIJI in napari under the top bar menu options: **plugins**>**Install/Uninstall Plugins** and enter "FIJI" as a search term.
 

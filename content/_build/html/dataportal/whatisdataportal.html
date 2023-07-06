@@ -679,13 +679,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-power-of-python">
-   The power of Python
+  <a class="reference internal nav-link" href="#corpus-schema">
+   Corpus Schema
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#interoperability-of-napari">
-   Interoperability of napari
+  <a class="reference internal nav-link" href="#dataset-submission">
+   Dataset Submission
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -723,19 +723,18 @@ title="Print to PDF"
 <h1>CELLxGENE Discover Data Portal<a class="headerlink" href="#cellxgene-discover-data-portal" title="Permalink to this headline">#</a></h1>
 <section id="learning-objectives">
 <h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">#</a></h2>
-<p>This is a brief introduction to the CELLxGENE Discover Data Portal and corpus. In this lesson, you’ll learn about the <a class="reference external" href="https://cellxgene.cziscience.com/collections">CELLxGENE Data Portal</a>, the schema that every dataset in the portal adheres to, and how to submit your datasets to the CELLxGENE team</p>
+<p>This is a brief introduction to the CELLxGENE Discover Data Portal and corpus. In this lesson, you’ll learn about the <a class="reference external" href="https://cellxgene.cziscience.com/collections">CELLxGENE Data Portal</a>, the <a class="reference external" href="https://github.com/chanzuckerberg/single-cell-curation/blob/main/schema/3.0.0/schema.md">schema</a> that every dataset in the portal adheres to, and how to submit your datasets to the CELLxGENE team.</p>
 <ol class="arabic simple">
 <li><p><span class="xref myst">Data portal Overview</span></p></li>
-<li><p><span class="xref myst">The power of Python</span></p></li>
-<li><p><span class="xref myst">Interoperability of napari</span></p></li>
-<li><p><span class="xref myst">Supporting materials</span></p></li>
+<li><p><span class="xref myst">Corpus Schema</span></p></li>
+<li><p><span class="xref myst">Dataset submission</span></p></li>
 </ol>
 <ul class="simple">
 <li><p><strong>Time to learn</strong>: 20 minutes</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Please check <a class="reference external" href="https://napari.org/tutorials/start_index.html">napari documentation</a> for more information, especially related to napari usage with programming. There are many aspects of napari’s capabilities that are not currently accessible without programming. Although parts of napari are still undergoing development and some kinks are still being ironed out, napari is a powerful tool for image analysis, especially for complex, large, or multi-dimensional datasets.</p>
+<p>Please check <a class="reference external" href="https://cellxgene.cziscience.com/docs/01__CellxGene">documentation</a> for more information.</p>
 </div>
 <p><img alt="Picture of art installation of networked cables" src="../_images/napari-viewer.gif" /></p>
 </section>
@@ -749,8 +748,8 @@ title="Print to PDF"
 <p>Although the <a class="reference external" href="https://napari.org/stable/tutorials/fundamentals/installation.html#install-as-a-bundled-app">napari bundled app</a> already exists, it is still in development and not entirely stable. We recommend <a class="reference external" href="https://napari.org/stable/tutorials/fundamentals/installation.html#prerequisites-for-installing-napari-as-a-python-package">installing napari as a Python package</a> if you intend to perform cell segmentation. This note will be updated as napari evolves.</p>
 </div>
 </section>
-<section id="the-power-of-python">
-<h2>The power of Python<a class="headerlink" href="#the-power-of-python" title="Permalink to this headline">#</a></h2>
+<section id="corpus-schema">
+<h2>Corpus Schema<a class="headerlink" href="#corpus-schema" title="Permalink to this headline">#</a></h2>
 <p>Large datasets produced by modern imaging technologies (such as time lapse imaging, confocal microscopy, super-resolution microscopy, or light sheet microscopy) can be challenging for legacy tech to handle and analyze. Sophisticated methods are needed for analysing this data and often these methods utilize programming languages such as Python. Python is an open-source language with many capabilities for image analysis provided by its numerous open-source packages (also called libraries). However, without coding experience, researchers have limited options for utilizing the image processing power of Python. Graphical user interfaces (GUIs), like napari’s, are a way to utilize Python-based analysis methods without writing any code.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
@@ -758,8 +757,8 @@ title="Print to PDF"
 </div>
 <p>Napari is built on the Python coding language, intending to bridge the gap between the inherently visual nature of image analysis and the computational power available through Python and its packages. This includes, for example, being able to leverage the speed of GPU-based computing and machine learning for large and complex processes, such as content-aware denoising, handling light-sheet microscope data, or even challenging segmentation cases!</p>
 </section>
-<section id="interoperability-of-napari">
-<h2>Interoperability of napari<a class="headerlink" href="#interoperability-of-napari" title="Permalink to this headline">#</a></h2>
+<section id="dataset-submission">
+<h2>Dataset Submission<a class="headerlink" href="#dataset-submission" title="Permalink to this headline">#</a></h2>
 <p>Since napari is in the alpha stage of development, there are some functions that are not yet stable or available in the GUI. napari can be used in conjuction with other analysis platforms via these plugins for no-code workflows. For example, napari is interoperable with <a class="reference external" href="https://imagej.net/software/fiji/">FIJI</a> through plugins for using napari with FIJI. Search for FIJI in napari under the top bar menu options: <strong>plugins</strong>&gt;<strong>Install/Uninstall Plugins</strong> and enter “FIJI” as a search term.</p>
 </section>
 <section id="supporting-materials">
@@ -862,13 +861,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-power-of-python">
-   The power of Python
+  <a class="reference internal nav-link" href="#corpus-schema">
+   Corpus Schema
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#interoperability-of-napari">
-   Interoperability of napari
+  <a class="reference internal nav-link" href="#dataset-submission">
+   Dataset Submission
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
