@@ -13,29 +13,31 @@ parts:
   - file: preface/feedback
   
   
-- caption: "Data Portal"
+- caption: "CZ CELLxGENE Discover"
   chapters:
-  - file: dataportal/whatisdataportal
-  - file: dataportal/gettingstarted
-  - file: dataportal/gettingstarted-2
-  - file: dataportal/gettingstarted2-5-napari-plugin-installation-workflow.md
+  - file: dataportal/01_discoverportal.md
+  - file: geneExpression/geneExpression.md
+    sections:
+      - file: geneExpression/interpretdotplot.md
+      - file: geneExpression/cellgeneordering.md
+      - file: geneExpression/dataprocessing.md
+      - file: geneExpression/tissues.md
+      - file: geneExpression/findmarkergenes.md
+  - file: dataportal/03_findfilterdatasets.md
+  - file: dataportal/04_collectionpage.md
   - file: dataportal/gettingstarted-3
 
 - caption: "Segmentation Workflows"
   chapters:
-  - file: workflow/cellpose
+  - file: geneExpression/partseg
     sections:
-      - file: workflow/cellpose-parameters
-      - file: workflow/cellpose-FIJI
-  - file: workflow/partseg
+      - file: geneExpression/partseg-nuclei
+      - file: geneExpression/partseg-foci
+      - file: geneExpression/partseg-quantification
+  - file: geneExpression/allencell
     sections:
-      - file: workflow/partseg-nuclei
-      - file: workflow/partseg-foci
-      - file: workflow/partseg-quantification
-  - file: workflow/allencell
-    sections:
-      - file: workflow/allencell-protocol
-      - file: workflow/allencell-parameters
+      - file: geneExpression/allencell-protocol
+      - file: geneExpression/allencell-parameters
       
 - caption: "Closing"
   chapters:
