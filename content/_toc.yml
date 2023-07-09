@@ -23,22 +23,22 @@ parts:
       - file: geneExpression/dataprocessing.md
       - file: geneExpression/tissues.md
       - file: geneExpression/findmarkergenes.md
-  - file: dataportal/03_findfilterdatasets.md
-  - file: dataportal/04_collectionpage.md
-  - file: dataportal/gettingstarted-3
-
-- caption: "Segmentation Workflows"
+      - file: cellguide/cellguide.md
+        sections:
+          - file: cellguide/ontologytree.md
+          - file: cellguide/celltype.md
+  - file: explorer/explorer.md
+    sections:
+      - file: explorer/UI-Overview.md
+      - file: explorer/metadata.md
+      - file: explorer/subset.md
+      - file: explorer/diffexp.md
+- caption: "CZ CELLxGENE Annotate"
   chapters:
-  - file: geneExpression/partseg
+  - file: annotate/test.md #annotateoverview.md
     sections:
-      - file: geneExpression/partseg-nuclei
-      - file: geneExpression/partseg-foci
-      - file: geneExpression/partseg-quantification
-  - file: geneExpression/allencell
-    sections:
-      - file: geneExpression/allencell-protocol
-      - file: geneExpression/allencell-parameters
-      
+      - file: annotate/annotate.md
+      - file: annotate/predict.md
 - caption: "Closing"
   chapters:
   - file: closing

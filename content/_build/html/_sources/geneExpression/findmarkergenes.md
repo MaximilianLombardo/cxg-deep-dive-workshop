@@ -17,10 +17,18 @@ The marker genes are ranked by their Marker Score (see _Algorithm_ for more deta
 :::{figure-md} data-processing
 <img src="images/DiscoverDocs/doc-site/4-2_add-dotplot.png" alt="gene expression" class="bg-primary mb-1" width="1200px">
 
-Add Dotplot.
+Add marker genes to dotplot.
 :::
 
-Clicking the `Copy` button copies a comma-separated list of the marker genes to the clipboard.
+To get a better sense of the numbers behind the visualization, hover any of the dots in the plot to what fraction of cells of a particular class express the gene and well as average expression values (scaled and non-scaled).
+
+:::{figure-md} markdown-fig
+<img src="images/CELLxGENE_gene_expression/geneExpressionHover1.png" alt="collections" class="bg-primary mb-1" width="900px">
+
+Hover over any of the dots on the chat to get a detailed view of data behind visualization
+:::
+
+Clicking the `Copy` button copies a comma-separated list of the marker genes to the clipboard. You might use this bring the list of marker genes from CELLxGENE to other analyis software.
 
 :::{figure-md} data-processing
 <img src="images/DiscoverDocs/doc-site/4-2_copy-button.png" alt="gene expression" class="bg-primary mb-1" width="1200px">
@@ -37,6 +45,8 @@ Close button.
 :::
 
 Clicking on the info button next to another cell type will replace the marker gene sidebar with the marker genes for the new cell type.
+
+
 
 ## Algorithm
 

@@ -55,6 +55,25 @@ mkdir ../content/dataportal/images/geneexpression
 python image_crop.py ../content/geneExpression/images/CELLxGENE_gene_expression/lung.png 1375 1300 5000 750 ../content/geneExpression/images/geneExpressionBanner.png
 
 
+### Cell Guide ###
+https://cellxgene.dev.single-cell.czi.technology/cell-guide/tissues/UBERON_0000948
+
+#search
+python screenshot_plus.py --width 1600 --height 900 -o ../content/cellguide/images/cellguideSearch.png "https://cellxgene.dev.single-cell.czi.technology/cell-guide/"
+python image_crop.py ../content/cellguide/images/cellguideSearch.png 1050 500 1200 450 ../content/cellguide/images/cellguideSearchFocus.png
+
+
+#tissue
+python screenshot_plus.py --width 1600 --height 900 -o ../content/cellguide/images/cellguideHeart.png "https://cellxgene.dev.single-cell.czi.technology/cell-guide/tissues/UBERON_0000948"
+
+#cell type - cardiac endothelial cell
+python screenshot_plus.py --width 1600 --height 2000 -o ../content/cellguide/images/celltypelong.png "https://cellxgene.dev.single-cell.czi.technology/cell-guide/CL_0010008"
+python image_crop.py ../content/cellguide/images/celltypelong.png 0 0 3200 1200 ../content/cellguide/images/descGPT.png
+python image_crop.py ../content/cellguide/images/celltypelong.png 0 1200 2400 1200 ../content/cellguide/images/tree.png
+python image_crop.py ../content/cellguide/images/celltypelong.png 0 2200 2400 800 ../content/cellguide/images/markergenes.png
+python image_crop.py ../content/cellguide/images/celltypelong.png 0 3000 2400 1200 ../content/cellguide/images/references.png
+
+
 
 
 ####################################
