@@ -1,0 +1,1065 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Find Marker Genes &#8212; CELLxGENE Deep Dive Course</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../_static/styles/bootstrap.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=4ec06e9971c5264fbd345897d5258098f11cc577" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94">
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=8bf782fb4ee92b3d3646425e50f299c4e1fd152d"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'geneExpression/findmarkergenes';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Explore relationships between cell types" href="../cellguide/cellguide.html" />
+    <link rel="prev" title="Available Tissues in Gene Expression" href="tissues.html" />
+    <script async defer data-domain="czi-napari-segmentation-workshop" src="https://plausible.io/js/plausible.js"></script>
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="None">
+
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+      
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../intro.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../_static/cellxgeneLogoFull.webp" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/cellxgeneLogoFull.webp" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../preface/about.html">
+                        About this Project
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../preface/whomadethis.html">
+                        Who made this course?
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../preface/singlecellanalysis.html">
+                        Single Cell Analysis Resources
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../preface/feedback.html">
+                        Frequently Asked Questions
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../dataportal/01_discoverportal.html">
+                        Discover single cell and spatial data
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="geneExpression.html">
+                        Discover Patterns In Gene Expression
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../explorer/explorer.html">
+                        Explore individual single cell datasets
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../annotate/annotateoverview.html">
+                        Annotate and Analyze Your Data
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../closing.html">
+                        Closing
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+        <div class="navbar-end-item navbar-persistent--container">
+          
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+        </div>
+      
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  
+    <div class="navbar-persistent--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+    </div>
+  
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../preface/about.html">
+                        About this Project
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../preface/whomadethis.html">
+                        Who made this course?
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../preface/singlecellanalysis.html">
+                        Single Cell Analysis Resources
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../preface/feedback.html">
+                        Frequently Asked Questions
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../dataportal/01_discoverportal.html">
+                        Discover single cell and spatial data
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="geneExpression.html">
+                        Discover Patterns In Gene Expression
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../explorer/explorer.html">
+                        Explore individual single cell datasets
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../annotate/annotateoverview.html">
+                        Annotate and Analyze Your Data
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../closing.html">
+                        Closing
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item">
+  
+
+
+<a class="navbar-brand logo" href="../intro.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../_static/cellxgeneLogoFull.webp" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/cellxgeneLogoFull.webp" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    </div>
+    <div class="sidebar-start-items__item">
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    CELLxGENE Suite Deep Dive
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preface</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../preface/about.html">About this Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preface/whomadethis.html">Who made this course?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preface/singlecellanalysis.html">Single Cell Analysis Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preface/feedback.html">Frequently Asked Questions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">CZ CELLxGENE Discover</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../dataportal/01_discoverportal.html">Discover single cell and spatial data</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="geneExpression.html">Discover Patterns In Gene Expression</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="interpretdotplot.html">Query and Visualize Gene Expression Across Tissues - FIX LINKS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cellgeneordering.html">Cell Type and Gene ordering</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="dataprocessing.html">Gene Expression Data Processing</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="tissues.html">Available Tissues in Gene Expression</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Find Marker Genes</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../cellguide/cellguide.html">Explore relationships between cell types</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cellguide/ontologytree.html">Understanding how cell types are related using the CL ontology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cellguide/celltype.html">Cell type descriptions, relationships, markers and data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../explorer/explorer.html">Explore individual single cell datasets</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../explorer/UI-Overview.html">Explorer UI Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../explorer/metadata.html">Visualize gene expression, categorical metadata, and quality control metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../explorer/subset.html">Filter and subset cells based on stackable metadata filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../explorer/diffexp.html">Differential expression</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">CZ CELLxGENE Annotate</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../annotate/annotateoverview.html">Annotate and Analyze Your Data</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Closing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../closing.html">Closing</a></li>
+</ul>
+
+    </div>
+</nav>
+    </div>
+  </div>
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+  
+  <div id="rtd-footer-container"></div>
+
+      </div>
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        <label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" data-toggle="tooltip" data-placement="right" title="Toggle primary sidebar">
+            <span class="fa-solid fa-bars"></span>
+        </label>
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<div class="dropdown dropdown-repository-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      <li><a href="https://github.com/chanzuckerberg/napari-segmentation-workshop" target="_blank"
+   class="btn btn-sm dropdown-item"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">repository</span>
+</a>
+</a>
+      
+      <li><a href="https://github.com/chanzuckerberg/napari-segmentation-workshop/issues/new?title=Issue%20on%20page%20%2FgeneExpression/findmarkergenes.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm dropdown-item"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">open issue</span>
+</a>
+</a>
+      
+  </ul>
+</div>
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      <li><a href="../_sources/geneExpression/findmarkergenes.md" target="_blank"
+   class="btn btn-sm dropdown-item"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</a>
+      
+      <li>
+<button onclick="printPdf(this)"
+  class="btn btn-sm dropdown-item"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</a>
+      
+  </ul>
+</div>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary" data-toggle="tooltip" data-placement="left" title="Toggle secondary sidebar">
+            <span class="fa-solid fa-list"></span>
+        </label>
+    </div>
+</div>
+            </div>
+            
+            
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Find Marker Genes</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tutorial">
+   Tutorial
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#algorithm">
+   Algorithm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#welch-s-t-test">
+   Welch’s t-test
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#validation">
+   Validation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tabula-sapiens-blood-data">
+     Tabula Sapiens blood data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#covid-blood-data-arunachalam-et-al">
+     COVID blood data (Arunachalam et al.)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#human-lung-cell-atlas-lung-data">
+     Human Lung Cell Atlas lung data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discussion">
+     Discussion
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reproducibility-notebooks">
+     Reproducibility notebooks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#caveats">
+   Caveats
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#marker-genes-are-not-available-for-blood-or-small-populations-of-cells">
+     Marker genes are not available for blood or small populations of cells
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+            <article class="bd-article" role="main">
+              
+  <section class="tex2jax_ignore mathjax_ignore" id="find-marker-genes">
+<h1>Find Marker Genes<a class="headerlink" href="#find-marker-genes" title="Permalink to this headline">#</a></h1>
+<p>Genes that are highly enriched in a particular group of cells can be used as markers for that population. Marker genes are commonly used to identify cell types in single-cell RNA-seq data. In Gene Expression, we can use the Find Marker Genes tool to identify genes that are specific to a particular cell type relative to other cell types in its tissue.</p>
+<section id="tutorial">
+<h2>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">#</a></h2>
+<p>First, let’s select the lung tissue in Gene Expression. There is an info button next to each cell type label. Clicking the button opens a sidebar with the top 25 marker genes for that cell type:</p>
+<figure class="align-default" id="data-processing">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/4-2_plasma-cell.png"><img alt="gene expression" class="bg-primary mb-1" src="../_images/4-2_plasma-cell.png" style="width: 1200px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Cell type marker genes.</span><a class="headerlink" href="#data-processing" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The marker genes are ranked by their Marker Score (see <em>Algorithm</em> for more details). In the sidebar, we can click the <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">to</span> <span class="pre">Dot</span> <span class="pre">Plot</span></code> button to add these genes to the heatmap.</p>
+<figure class="align-default" id="id1">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/4-2_add-dotplot.png"><img alt="gene expression" class="bg-primary mb-1" src="../_images/4-2_add-dotplot.png" style="width: 1200px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Add marker genes to dotplot.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>To get a better sense of the numbers behind the visualization, hover any of the dots in the plot to what fraction of cells of a particular class express the gene and well as average expression values (scaled and non-scaled).</p>
+<figure class="align-default" id="markdown-fig">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/geneExpressionHover1.png"><img alt="collections" class="bg-primary mb-1" src="../_images/geneExpressionHover1.png" style="width: 900px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Hover over any of the dots on the chat to get a detailed view of data behind visualization</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Clicking the <code class="docutils literal notranslate"><span class="pre">Copy</span></code> button copies a comma-separated list of the marker genes to the clipboard. You might use this bring the list of marker genes from CELLxGENE to other analyis software.</p>
+<figure class="align-default" id="id2">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/4-2_copy-button.png"><img alt="gene expression" class="bg-primary mb-1" src="../_images/4-2_copy-button.png" style="width: 1200px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Copy Button.</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>To minimize the sidebar, click the chevron in the upper-right corner of the sidebar.</p>
+<figure class="align-default" id="id3">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/4-2_close-button.png"><img alt="gene expression" class="bg-primary mb-1" src="../_images/4-2_close-button.png" style="width: 1200px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Close button.</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Clicking on the info button next to another cell type will replace the marker gene sidebar with the marker genes for the new cell type.</p>
+</section>
+<section id="algorithm">
+<h2>Algorithm<a class="headerlink" href="#algorithm" title="Permalink to this headline">#</a></h2>
+<p>For a selected cell type in a tissue,</p>
+<ul class="simple">
+<li><p>Use Welch’s t-test to compare the gene expressions in the selected cell type to each other cell type in the tissue.</p>
+<ul>
+<li><p>Note: each cell type contains cells labeled as that cell type as well as its descendants in the cell ontology. Consequently, cell types are only compared to other cell types that are not in the same lineage (i.e. comparisons with ancestors and descendants are ignored).</p></li>
+<li><p>Record the effect size for each gene in each comparison.</p></li>
+</ul>
+</li>
+<li><p>For each gene, calculate the 5th percentile of the effect sizes across all comparisons. This is the marker score.</p>
+<ul>
+<li><p>Let <span class="math notranslate nohighlight">\(T_t\)</span> be the set of cell types <span class="math notranslate nohighlight">\(\{c_1,\ldots,c_n\}\)</span> in tissue <span class="math notranslate nohighlight">\(t\)</span>. The marker score (<span class="math notranslate nohighlight">\(S_{c_ig_j}\)</span>) for gene <span class="math notranslate nohighlight">\(g_j\)</span> in cell type <span class="math notranslate nohighlight">\(c_i\)</span> is <span class="math notranslate nohighlight">\(S_{c_ig_j}=p_5(\{e_{c_kg_j} : c_k \in T_t, c_k \neq c_i\})\)</span> where <span class="math notranslate nohighlight">\(p_5\)</span> is the 5th percentile operator and <span class="math notranslate nohighlight">\(e_{c_kg_j}\)</span> is the effect size of the t-test comparing <span class="math notranslate nohighlight">\(g_j\)</span> in <span class="math notranslate nohighlight">\(c_i\)</span> to <span class="math notranslate nohighlight">\(c_k\)</span>.</p></li>
+</ul>
+</li>
+<li><p>Sort the genes by their marker score in descending order and return the top 25.</p></li>
+</ul>
+</section>
+<section id="welch-s-t-test">
+<h2>Welch’s t-test<a class="headerlink" href="#welch-s-t-test" title="Permalink to this headline">#</a></h2>
+<p>Welch’s t-test is a statistical test for comparing the means of two independent samples with unequal sample sizes and variances. For a particular gene,</p>
+<ul class="simple">
+<li><p>Let two groups of cells be <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span>. Calculate the following values:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(m_1\)</span> and <span class="math notranslate nohighlight">\(m_2\)</span> are the average expression of the gene in <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> respectively.</p></li>
+<li><p><span class="math notranslate nohighlight">\(s_1\)</span> and <span class="math notranslate nohighlight">\(s_2\)</span> are the standard deviations of the gene in <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> respectively.</p></li>
+<li><p><span class="math notranslate nohighlight">\(n_1\)</span> and <span class="math notranslate nohighlight">\(n_2\)</span> are the number of cells in <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> respectively <em>excluding cells from datasets that did not measure the gene</em>.</p></li>
+</ul>
+</li>
+<li><p>Calculate the effect size (Cohen’s d):</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(e = \frac{m_1 - m_2}{\sqrt{\frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 1}}}\)</span>.</p></li>
+</ul>
+</li>
+<li><p>Calculate the t-statistic <span class="math notranslate nohighlight">\(t\)</span>:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(t = \frac{m_1 - m_2}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}\)</span>.</p></li>
+</ul>
+</li>
+<li><p>Approximate degrees of freedom using Satterthwaite formula:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(df = \frac{\left(\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}\right)^2}{\frac{\left(\frac{s_1^2}{n_1}\right)^2}{n_1 - 1} + \frac{\left(\frac{s_2^2}{n_2}\right)^2}{n_2 - 1}}\)</span>.</p></li>
+</ul>
+</li>
+<li><p>Calculate the p-value using the t-distribution (<span class="math notranslate nohighlight">\(P(T &gt;t)\)</span>).</p></li>
+</ul>
+</section>
+<section id="validation">
+<h2>Validation<a class="headerlink" href="#validation" title="Permalink to this headline">#</a></h2>
+<p>To determine if the genes reported by Find Marker Genes contain biologically relevant information, we can check to see if the marker genes alone are enough to recapiulate the cell type clustering of a few test datasets:</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://cellxgene.cziscience.com/collections/e5f58829-1a66-40b5-a624-9046778e74f5">Tabula Sapiens blood data</a></p></li>
+<li><p><a class="reference external" href="https://cellxgene.cziscience.com/collections/b9fc3d70-5a72-4479-a046-c2cc1ab19efc">COVID blood data (Arunachalam et al.)</a></p></li>
+<li><p><a class="reference external" href="https://cellxgene.cziscience.com/collections/5d445965-6f1a-4b68-ba3a-b8f765155d3a">Human Lung Cell Atlas lung data</a></p></li>
+</ol>
+<p>Each test dataset was run through one of three analysis workflows:</p>
+<ol class="arabic simple">
+<li><p><strong>Standard analysis</strong>: This is the standard analysis workflow offered by <a class="reference external" href="https://scanpy.readthedocs.io/en/stable/">Scanpy</a> with cell types clustered using the Leiden algorithm.</p></li>
+<li><p><strong>Marker gene analysis</strong>: We take the union of the top 5 marker genes per cell type, subsample the data down to the resulting genes, and run the standard analysis workflow on the subsampled data.</p></li>
+<li><p><strong>Random gene analysis</strong>: We subsample the data down to <span class="math notranslate nohighlight">\(N\)</span> random genes and run the standard analysis workflow on the subsampled data, where <span class="math notranslate nohighlight">\(N\)</span> is the number of marker genes used in (2).</p></li>
+</ol>
+<p>For each dataset and workflow, we report the adjusted rand index (ARI) and normalized mutual information (NMI) between the Leiden clustering results and the original cell type annotations. We also present the UMAP visualizations to qualitatively illustrate the clustering quality for each workflow.</p>
+<section id="tabula-sapiens-blood-data">
+<h3>Tabula Sapiens blood data<a class="headerlink" href="#tabula-sapiens-blood-data" title="Permalink to this headline">#</a></h3>
+<p><strong>Standard analysis</strong></p>
+<figure class="align-default" id="id4">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/4-2_blood1_standard_umap.png"><img alt="gene expression" class="bg-primary mb-1" src="../_images/4-2_blood1_standard_umap.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">ARI: 0.35, NMI: 0.69</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Marker gene analysis</strong></p>
+<figure class="align-default" id="id5">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/4-2_blood1_marker_umap.png"><img alt="gene expression" class="bg-primary mb-1" src="../_images/4-2_blood1_marker_umap.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">ARI: 0.31, NMI: 0.68</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Random analysis</strong></p>
+<figure class="align-default" id="id6">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/4-2_blood1_random_umap.png"><img alt="gene expression" class="bg-primary mb-1" src="../_images/4-2_blood1_random_umap.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">ARI: 0.16, NMI: 0.45</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="covid-blood-data-arunachalam-et-al">
+<h3>COVID blood data (Arunachalam et al.)<a class="headerlink" href="#covid-blood-data-arunachalam-et-al" title="Permalink to this headline">#</a></h3>
+<p><strong>Standard analysis</strong></p>
+<figure class="align-default" id="id7">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/4-2_blood2_standard_umap.png"><img alt="gene expression" class="bg-primary mb-1" src="../_images/4-2_blood2_standard_umap.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">ARI: 0.50, NMI: 0.75</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Marker gene analysis</strong></p>
+<figure class="align-default" id="id8">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/4-2_blood2_marker_umap.png"><img alt="gene expression" class="bg-primary mb-1" src="../_images/4-2_blood2_marker_umap.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">ARI: 0.56, NMI: 0.75</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Random analysis</strong></p>
+<figure class="align-default" id="id9">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/4-2_blood2_random_umap.png"><img alt="gene expression" class="bg-primary mb-1" src="../_images/4-2_blood2_random_umap.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">ARI: 0.17, NMI: 0.33</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="human-lung-cell-atlas-lung-data">
+<h3>Human Lung Cell Atlas lung data<a class="headerlink" href="#human-lung-cell-atlas-lung-data" title="Permalink to this headline">#</a></h3>
+<p><strong>Standard analysis</strong></p>
+<figure class="align-default" id="id10">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/4-2_lung_standard_umap.png"><img alt="gene expression" class="bg-primary mb-1" src="../_images/4-2_lung_standard_umap.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">ARI: 0.50, NMI: 0.80</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Marker gene analysis</strong></p>
+<figure class="align-default" id="id11">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/4-2_lung_marker_umap.png"><img alt="gene expression" class="bg-primary mb-1" src="../_images/4-2_lung_marker_umap.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">ARI: 0.50, NMI: 0.79</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Random analysis</strong></p>
+<figure class="align-default" id="id12">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/4-2_lung_random_umap.png"><img alt="gene expression" class="bg-primary mb-1" src="../_images/4-2_lung_random_umap.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text">ARI: 0.18, NMI: 0.41</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="discussion">
+<h3>Discussion<a class="headerlink" href="#discussion" title="Permalink to this headline">#</a></h3>
+<p>Subsampling the data down to the union of the top 5 marker genes per cell type typically yields around 250-350 unique genes. If this set of genes were not enriched in biologically relevant genes, subsetting the data down to such a small number of genes would give very low quality results (as shown in the random gene analysis results). Encouragingly, we do not observe any significant decrease in clustering accuracy when subsetting down to the marker genes in any of the datasets tested.</p>
+</section>
+<section id="reproducibility-notebooks">
+<h3>Reproducibility notebooks<a class="headerlink" href="#reproducibility-notebooks" title="Permalink to this headline">#</a></h3>
+<ol class="arabic simple">
+<li><p><span class="xref myst">Tabula Sapiens blood data</span></p></li>
+<li><p><span class="xref myst">COVID blood data (Arunachalam et al.)</span></p></li>
+<li><p><span class="xref myst">Human Lung Cell Atlas lung data</span></p></li>
+</ol>
+</section>
+</section>
+<section id="caveats">
+<h2>Caveats<a class="headerlink" href="#caveats" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>It is important to note that some methodological decisions were made to balance accuracy with efficiency and scalability. For example, we use a t-test to perform differential expression, which is a simple and fast test. However, it may not be as accurate as more sophisticated (and computationally intensive) statistical tests.</p></li>
+<li><p>While differential expression is typically performed on raw counts for single-cell RNA sequencing data, we opted to use the <NextLink href="04__Analyze%20Public%20Data/4_2__Gene%20Expression%20Documentation/4_2_3__Gene%20Expression%20Data%20Processing">rankit-normalized</NextLink> values in order to identify marker genes that corroborate the gene expressions shown in the dot plot.</p></li>
+<li><p>For the beta, we opted to not report the p-values for each gene. Though we can calculate approximate p-values using the t-statistic and degrees of freedom calculated in <em>Welch’s t-test</em>, it is difficult to accurately aggregate the p-values for each gene across all comparisons. The most reliable method involves repeatedly permuting the data to generate a null distribution, but this is computationally intensive.</p></li>
+<li><p>Currently, marker genes are only calculated for cell types in tissues using only <em>healthy</em> cells. Applying secondary filters to the data (like disease, ethnicity, etc.) does not affect the results. Enabling dynamic calculation of marker genes for arbitrary populations of cells in arbitrary subsets of the data may be a direction for future development.</p></li>
+<li><p>Ideal marker genes for a particular cell type are expressed in all of its cells and not expressed anywhere else: they have binary expression patterns. In reality, almost no genes have truly binary expression patterns. Instead, they have genes that are statistically enriched in their cells relative to all other cell types. Additionally, genes may be good markers for a cell type in one context (e.g. a tissue) but not another (e.g. the entire human body).</p></li>
+</ul>
+<section id="marker-genes-are-not-available-for-blood-or-small-populations-of-cells">
+<h3>Marker genes are not available for blood or small populations of cells<a class="headerlink" href="#marker-genes-are-not-available-for-blood-or-small-populations-of-cells" title="Permalink to this headline">#</a></h3>
+<p>It may be difficult to identify any good markers for some cell types, especially if they have a small number of cells or are compared to many similar cell types. To account for the former scenario, marker genes are not displayed for cell types with fewer than 25 cells. The latter scenario is particularly relevant in the blood as it contains many closely-related cell types. As a result, we have temporarily disabled the find marker genes feature for cell types in blood.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./geneExpression"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+            </article>
+            
+
+            
+            
+            <footer class="bd-footer-article">
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+  <a class='left-prev' id="prev-link" href="tissues.html" title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+          <p class="prev-next-subtitle">previous</p>
+          <p class="prev-next-title">Available Tissues in Gene Expression</p>
+      </div>
+  </a>
+  <a class='right-next' id="next-link" href="../cellguide/cellguide.html" title="next page">
+  <div class="prev-next-info">
+      <p class="prev-next-subtitle">next</p>
+      <p class="prev-next-title">Explore relationships between cell types</p>
+  </div>
+  <i class="fa-solid fa-angle-right"></i>
+  </a>
+</div>
+            </footer>
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tutorial">
+   Tutorial
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#algorithm">
+   Algorithm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#welch-s-t-test">
+   Welch’s t-test
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#validation">
+   Validation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tabula-sapiens-blood-data">
+     Tabula Sapiens blood data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#covid-blood-data-arunachalam-et-al">
+     COVID blood data (Arunachalam et al.)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#human-lung-cell-atlas-lung-data">
+     Human Lung Cell Atlas lung data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discussion">
+     Discussion
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reproducibility-notebooks">
+     Reproducibility notebooks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#caveats">
+   Caveats
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#marker-genes-are-not-available-for-blood-or-small-populations-of-cells">
+     Marker genes are not available for blood or small populations of cells
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By CZI CELLxGENE team
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2023.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+Last updated on None.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </div>
+        </footer>
+        
+
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94"></script>
+
+  </body>
+</html>
