@@ -1,4 +1,4 @@
-# Query and Visualize Gene Expression Across Tissues - FIX LINKS
+# Query and Visualize Gene Expression Across Tissues
 
 Gene Expression is a tool that allows users to query the expression of any gene across all data in CELLxGENE Discover. A query results in a dot plot per tissue as explained below.
 

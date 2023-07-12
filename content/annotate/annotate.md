@@ -4,7 +4,7 @@
 
 CZ CELLxGENE Annotate enables users to create and edit categorical annotations within the app. This is commonly used to annotate cell types of data being analyzed for the first time.
 
-<Image src={"/doc-site/5-4_annotate_data.png"} />
+![Tabula Sapiens]("images/DiscoverDocs/doc-site/5-4_annotate_data.png")
 
 ## Data Lifecycle For Annotations
 

@@ -38,7 +38,10 @@ python image_crop.py ../content/dataportal/images/TSCollection/fullscreen.png 16
 #Datasets
 python image_crop.py ../content/dataportal/images/TSCollection/fullscreen.png 0 750 3200 525 ../content/dataportal/images/TSCollection/datasets.png
 
+#TS Explorer instance
+# https://cellxgene.cziscience.com/e/53d208b0-2cfd-4366-9866-c3c6114081bc.cxg/
 
+python screenshot_plus.py --width 1600 --height 900 -o ../content/dataportal/images/TSCollection/explorer.png "https://cellxgene.cziscience.com/e/53d208b0-2cfd-4366-9866-c3c6114081bc.cxg/"
 
 
 #### Datasets Page ### 

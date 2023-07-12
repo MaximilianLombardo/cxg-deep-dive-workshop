@@ -9,13 +9,14 @@ parts:
   chapters:
   - file: preface/about
   - file: preface/whomadethis
-  - file: preface/singlecellanalysis
   - file: preface/feedback
-  
-  
+
 - caption: "CZ CELLxGENE Discover"
   chapters:
   - file: dataportal/01_discoverportal.md
+    sections:
+      - file: dataportal/portal.md
+      - file: dataportal/submission.md
   - file: geneExpression/geneExpression.md
     sections:
       - file: geneExpression/interpretdotplot.md
@@ -35,10 +36,14 @@ parts:
       - file: explorer/diffexp.md
 - caption: "CZ CELLxGENE Annotate"
   chapters:
-  - file: annotate/test.md #annotateoverview.md
+  - file: annotate/overview.md #annotate/annotateoverview.md
     sections:
+      - file: annotate/start.md
       - file: annotate/annotate.md
       - file: annotate/predict.md
+- caption: "Discover Census and API"
+  chapters:
+  - file: census/census.md
 - caption: "Closing"
   chapters:
   - file: closing

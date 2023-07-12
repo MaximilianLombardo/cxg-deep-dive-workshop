@@ -1,8 +1,8 @@
-# napari Segmentation learning course 
+# CELLxGENE Deep Dive Workshop
 
 Course materials for performing cell segmentation in napari
 
-Site here: https://chanzuckerberg.github.io/napari-segmentation-workshop/
+Site here: https://maximilianlombardo.github.io/cxg-deep-dive-workshop/intro.html
 
 ## Usage
 
@@ -33,5 +33,7 @@ Copyright (c) 2022 Chan Zuckerberg Initiative
 If you believe you have found a security issue, please responsibly disclose by contacting us at [security@chanzuckerberg.com](mailto:security@chanzuckerberg.com).
 
 ## Credits
+
+The CELLxGENE team developed this course based off of Napari's segmentation workshop: https://chanzuckerberg.github.io/napari-segmentation-workshop/intro.html
 
 This project is created using the excellent open source [Jupyter Book project](https://jupyterbook.org/) and the [executablebooks/cookiecutter-jupyter-book template](https://github.com/executablebooks/cookiecutter-jupyter-book).
