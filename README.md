@@ -1,14 +1,12 @@
 # CELLxGENE Deep Dive Workshop
 
-Course materials for performing cell segmentation in napari
-
 Site here: https://maximilianlombardo.github.io/cxg-deep-dive-workshop/intro.html
 
 ## Usage
 
 ### Building the book
 
-If you'd like to develop and/or build the napari Segmentation Course book, you should:
+If you'd like to develop and/or build the CELLxGENE Segmentation Course book, you should:
 
 1. Clone this repository
 2. Run `pip install -r requirements.txt` (it is recommended you do this within a virtual environment)
